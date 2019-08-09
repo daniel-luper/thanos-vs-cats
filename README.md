@@ -8,6 +8,7 @@ Avoid contact with all cats (note that there are four types of cats, each with t
 #### Controls
 - Arrow keys: move
 - Spacebar: select/snap
-Snapping will remove 50% of cats from the screen.
+
+NB: Snapping will remove 50% of cats from the screen.
 
 ## Installation
