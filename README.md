@@ -11,4 +11,5 @@ Avoid contact with all cats (note that there are four types of cats, each with t
 
 NB: Snapping will remove 50% of cats from the screen.
 
-## Installation
+## Download (Windows 64-bit)
+*coming soon*
