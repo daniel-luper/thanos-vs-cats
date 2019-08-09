@@ -1,0 +1,145 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://MobCat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/space.jpg" type="Texture" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MobTimer.gd" type="Script" id=5]
+[ext_resource path="res://RainbowTimer.gd" type="Script" id=6]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://InfinityStones.gd" type="Script" id=8]
+[ext_resource path="res://images/infinity_stones/infinity_stone_blue.png" type="Texture" id=9]
+[ext_resource path="res://images/infinity_stones/infinity_stone_green.png" type="Texture" id=10]
+[ext_resource path="res://images/infinity_stones/infinity_stone_orange.png" type="Texture" id=11]
+[ext_resource path="res://images/infinity_stones/infinity_stone_pink.png" type="Texture" id=12]
+[ext_resource path="res://images/infinity_stones/infinity_stone_red.png" type="Texture" id=13]
+[ext_resource path="res://images/infinity_stones/infinity_stone_yellow.png" type="Texture" id=14]
+[ext_resource path="res://sounds/collect.wav" type="AudioStream" id=15]
+[ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=16]
+[ext_resource path="res://sounds/yoda_death.wav" type="AudioStream" id=17]
+[ext_resource path="res://sounds/snap.wav" type="AudioStream" id=18]
+[ext_resource path="res://music/epic_music_01.wav" type="AudioStream" id=19]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0, 0, 0, 0, 0, 640, 960, 0, 0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.5198
+height = 12.7212
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+MobCat = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 360, 640 )
+rotation = 1.57079
+texture = ExtResource( 3 )
+
+[node name="Thanos" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 120, 660 )
+speed = 360
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.01
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MobTimer" type="Timer" parent="."]
+script = ExtResource( 5 )
+
+[node name="RainbowTimer" type="Timer" parent="."]
+wait_time = 2.0
+script = ExtResource( 6 )
+
+[node name="DrumTimer" type="Timer" parent="."]
+wait_time = 13.0
+one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 320, 600 )
+
+[node name="MobPath" type="Path2D" parent="."]
+editor/display_folded = true
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="InfinityStones" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( -37.0123, -40.9084 )
+gravity = 0.0
+script = ExtResource( 8 )
+
+[node name="Blue" type="Sprite" parent="InfinityStones"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+
+[node name="Green" type="Sprite" parent="InfinityStones"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Orange" type="Sprite" parent="InfinityStones"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="Pink" type="Sprite" parent="InfinityStones"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+
+[node name="Red" type="Sprite" parent="InfinityStones"]
+visible = false
+position = Vector2( 3.63798e-012, 9.09495e-013 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+
+[node name="Yellow" type="Sprite" parent="InfinityStones"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfinityStones"]
+shape = SubResource( 2 )
+
+[node name="InfinityTimer" type="Timer" parent="InfinityStones"]
+wait_time = 3.0
+one_shot = true
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="InfinityStones"]
+stream = ExtResource( 15 )
+volume_db = -8.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="SnapSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+autoplay = true
+[connection signal="area_entered" from="Thanos" to="." method="_on_Thanos_area_entered"]
+[connection signal="hit" from="Thanos" to="." method="game_over"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="RainbowTimer" to="." method="_on_RainbowTimer_timeout"]
+[connection signal="timeout" from="DrumTimer" to="." method="_on_DrumTimer_timeout"]
+[connection signal="snap" from="HUD" to="." method="_on_snap"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="stones_collected" from="InfinityStones" to="." method="_on_InfinityStones_stones_collected"]
+[connection signal="timeout" from="InfinityStones/InfinityTimer" to="InfinityStones" method="_on_InfinityTimer_timeout"]

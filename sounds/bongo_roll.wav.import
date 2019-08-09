@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bongo_roll.wav-260a7c44d11bbe4fd30c946bed3ba703.sample"
+
+[deps]
+
+source_file="res://sounds/bongo_roll.wav"
+dest_files=[ "res://.import/bongo_roll.wav-260a7c44d11bbe4fd30c946bed3ba703.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

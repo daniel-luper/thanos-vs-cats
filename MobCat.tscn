@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://MobCat.gd" type="Script" id=1]
+[ext_resource path="res://images/basic_cat.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "turn_to_dust"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+max_speed = 250
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 2.84, 2.99 )
+shape = SubResource( 1 )
+
+[node name="Visibility" type="VisibilityNotifier2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/turn_to_dust = SubResource( 2 )
+[connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

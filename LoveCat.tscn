@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://LoveCat.gd" type="Script" id=1]
+[ext_resource path="res://images/love_cat/love_01.png" type="Texture" id=2]
+[ext_resource path="res://images/love_cat/love_02.png" type="Texture" id=3]
+[ext_resource path="res://images/love_cat/love_03.png" type="Texture" id=4]
+[ext_resource path="res://images/love_cat/love_04.png" type="Texture" id=5]
+[ext_resource path="res://images/love_cat/love_05.png" type="Texture" id=6]
+[ext_resource path="res://images/love_cat/love_06.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 11.6522
+height = 19.5034
+
+[sub_resource type="Animation" id=3]
+resource_name = "turn_to_dust"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="LoveCat" type="RigidBody2D"]
+position = Vector2( 321.308, 313.921 )
+gravity_scale = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.43, 8.48 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/turn_to_dust = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

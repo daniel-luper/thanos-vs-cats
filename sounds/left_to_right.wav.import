@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/left_to_right.wav-c307e91db151de37934ffe77b2f0e859.sample"
+
+[deps]
+
+source_file="res://sounds/left_to_right.wav"
+dest_files=[ "res://.import/left_to_right.wav-c307e91db151de37934ffe77b2f0e859.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
