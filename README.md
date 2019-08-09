@@ -1,4 +1,4 @@
-# thanos-vs-cats
+# Thanos vs Cats
 Play as Thanos as he runs away from the most powerful force in the universe: **cats**.
 
 ## How to play
