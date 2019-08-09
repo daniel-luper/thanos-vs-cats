@@ -12,4 +12,6 @@ Avoid contact with all cats (note that there are four types of cats, each with t
 NB: Snapping will remove 50% of cats from the screen.
 
 ## Download (Windows 64-bit)
-*coming soon*
+- Download from [here](https://www.dropbox.com/s/1d5elpblmcv4yh5/thanos-vs-cats_v1.1.zip?dl=0)
+- Unzip
+- Run 'Thanos vs Cats.exe'
