@@ -15,3 +15,6 @@ NB: Snapping will remove 50% of cats from the screen.
 - Download from [here](https://www.dropbox.com/s/1d5elpblmcv4yh5/thanos-vs-cats_v1.1.zip?dl=0)
 - Unzip
 - Run 'Thanos vs Cats.exe'
+
+## Built with
+[Godot game engine](https://godotengine.org/) version 3.1.1
