@@ -1,7 +1,7 @@
 # Thanos vs Cats
 Play as Thanos as he runs away from the most powerful force in the universe: **cats**.
 
-[gif](https://media.giphy.com/media/h7M5Gdtwbfdfmi7DYG/giphy.gif)
+<img src=https://media.giphy.com/media/h7M5Gdtwbfdfmi7DYG/giphy.gif width=320 height=480>
 
 ## How to play
 #### Objective
