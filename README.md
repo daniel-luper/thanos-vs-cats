@@ -1,6 +1,8 @@
 # Thanos vs Cats
 Play as Thanos as he runs away from the most powerful force in the universe: **cats**.
 
+[gif](https://media.giphy.com/media/h7M5Gdtwbfdfmi7DYG/giphy.gif)
+
 ## How to play
 #### Objective
 Avoid contact with all cats (note that there are four types of cats, each with their own characteristics) for as long as possible.
